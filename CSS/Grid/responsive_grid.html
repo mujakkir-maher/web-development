@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid Practice</title>
+    <style>
+        .container{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1 fr));
+            grid-gap: 3px;
+            /* different size er image use korar karone layout e onek jaygay gap toiri hoy.
+            eta handle korar jonno amader layout er flow ta bujhte hobe. amar picture
+            gula exactly kun flow te fill hoy grid e. */
+            grid-auto-flow: dense; /* dense algorithm follow kore, jekhane jayga pay sekhane bosay */
+        }
+        .container img{
+            width: 100%;
+            height: 100%;
+            /* sob imagegula 100% dile onek somoy fete jay. 
+            setake solve kora dorkar */
+            object-fit: cover; /* pic gula crop hoye nijer ratio onujaiee thakbe */
+        }
+        .horizontal{
+            grid-column: auto / span 2;
+        }
+        .vertical{
+            grid-row: auto / span 2;
+        }
+        .big{
+            grid-column: auto / span 2;
+            grid-row: auto / span 2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="normal_1">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500&auto=format&fit=crop" alt="Normal 1">
+        </div>
+        <div class="normal_2">
+            <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=500&auto=format&fit=crop" alt="Normal 2">
+        </div>
+        <div class="normal_3">
+            <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=500&auto=format&fit=crop" alt="Normal 3">
+        </div>
+        <div class="normal_4">
+            <img src="https://images.unsplash.com/photo-1527489377706-5bf97e608852?w=500&auto=format&fit=crop" alt="Normal 4">
+        </div>
+
+        <div class="horizontal">
+            <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&auto=format&fit=crop" alt="Horizontal 1">
+        </div>
+        <div class="horizontal">
+            <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&auto=format&fit=crop" alt="Horizontal 2">
+        </div>
+
+        <div class="vertical">
+            <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=400&auto=format&fit=crop" alt="Vertical 1">
+        </div>
+        <div class="vertical">
+            <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=400&auto=format&fit=crop" alt="Vertical 2">
+        </div>
+
+        <div class="big">
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1000&auto=format&fit=crop" alt="Big 1">
+        </div>
+        <div class="big">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1000&auto=format&fit=crop" alt="Big 2">
+        </div>
+
+    </div>
+
+</body>
+</html>

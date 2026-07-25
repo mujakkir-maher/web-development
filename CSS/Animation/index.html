@@ -1,0 +1,210 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover to Float Ghost</title>
+    <style>
+        /* পেজের মাঝখানে আনার জন্য */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a1a2e;
+        }
+
+        /* মেইন কন্টেইনার */
+        .ghost-container {
+            position: relative;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* ভূত ইমোজি */
+        .ghost {
+            font-size: 80px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        /* ভুতের নিচের ছায়া */
+        .shadow {
+            width: 70px;
+            height: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            position: absolute;
+            bottom: -25px;
+            left: 5px;
+            opacity: 0.8;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* ম্যাজিক ফিক্স: মাউস হোভার করলে অ্যানিমেশন চালু হবে */
+        
+        /* ১. ভূত ভাসতে শুরু করবে এবং একটু বড় হবে */
+        .ghost-container:hover .ghost {
+            animation: float 1.5s ease-in-out infinite alternate;
+        }
+
+        /* ২. ছায়া ছোট-বড় হওয়া শুরু করবে */
+        .ghost-container:hover .shadow {
+            animation: shrink 1.5s ease-in-out infinite alternate;
+        }
+
+        /* ভুতের ওপরে ওঠার কি-ফ্রেম */
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                transform: translateY(-30px) scale(1.1); /* ৩০ পিক্সেল ওপরে উঠবে এবং হালকা বড় হবে */
+            }
+        }
+
+        /* ছায়া ছোট-বড় হওয়ার কি-ফ্রেম */
+        @keyframes shrink {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(0.5); /* ভূত ওপরে উঠলে ছায়া ছোট ও হালকা হবে */
+                opacity: 0.2;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ghost-container">
+        <div class="ghost">👻</div>
+        <div class="shadow"></div>
+    </div>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Card Flip - Practice</title>
+    <style>
+        /* স্ক্রিনের মাঝখানে আনার বেসিক */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0f172a;
+            font-family: sans-serif;
+        }
+
+        /* ১. মেইন থ্রিডি এরিয়া (কন্টেইনার) */
+        .card-container {
+            width: 300px;
+            height: 400px;
+            perspective: 1000px; /* এই লাইনটি কার্ডটিকে ৩ডি লুক দেয়, এটা ছাড়া কার্ড চ্যাপ্টা ঘুরবে */
+        }
+
+        /* ২. আসল কার্ড (যেটা ঘুরবে) */
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d; /* ভেতরের উপাদানগুলোকেও ৩ডি ইফেক্ট দেয় */
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* কাস্টম টাইমিং */
+            cursor: pointer;
+        }
+
+        /* ম্যাজিক হোভার: কন্টেইনারে মাউস নিলে কার্ড ১৮০ ডিগ্রি ঘুরে যাবে */
+        .card-container:hover .card {
+            transform: rotateY(180deg);
+        }
+
+        /* ৩. কার্ডের দুইটা পিঠ (Front এবং Back) এর কমন সিএসএস */
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            backface-visibility: hidden; /* মোস্ট ইম্পর্ট্যান্ট: উল্টো পিঠে গেলে সামনের পিঠ যেন লুকিয়ে যায় */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            color: white;
+        }
+
+        /* সামনের পিঠের ডিজাইন */
+        .front {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+        }
+
+        .avatar {
+            font-size: 70px;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite ease-in-out; /* অনবরত অ্যানিমেশন */
+        }
+
+        /* পেছনের পিঠের ডিজাইন */
+        .back {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            transform: rotateY(180deg); /* পেছনের পিঠকে আগে থেকেই ১৮0 ডিগ্রি ঘুরিয়ে রাখা হয়েছে */
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .social-btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: white;
+            color: #1d4ed8;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        /* বাটনের ওপর আলাদা হোভার ট্রানজিশন */
+        .social-btn:hover {
+            transform: scale(1.1);
+            background-color: #f0f0f0;
+        }
+
+        /* অবতারের ধুকপুক অ্যানিমেশন */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="card">
+            
+            <div class="front">
+                <div class="avatar">👨‍💻</div>
+                <h2>Mujakkir Maher</h2>
+                <p>Web Developer</p>
+            </div>
+            
+            <div class="back">
+                <h2>About Me</h2>
+                <p>Learning CSS Transition, Animation & 3D Effects to build awesome web layouts!</p>
+                <button class="social-btn">Follow Me</button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
