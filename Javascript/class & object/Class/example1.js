@@ -1,21 +1,20 @@
 class ToyotaCar {
     start() {
-        console.log("start");
+        console.log('start');
     }
 
     stop() {
-        console.log("Stop");
+        console.log('Stop');
     }
 
-    setBrand(brand){
+    setBrand(brand) {
         this.brand = brand;
     }
 }
 
-let lexus = new ToyotaCar();
-let landcruser = new ToyotaCar();
-landcruser.setBrand("Toyoya Landcruser v8");
+const lexus = new ToyotaCar();
+const landcruser = new ToyotaCar();
+landcruser.setBrand('Toyoya Landcruser v8');
 lexus.start();
 landcruser.stop();
 console.log(landcruser.brand);
-

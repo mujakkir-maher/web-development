@@ -5,7 +5,7 @@
 
 // myfunc();
 
-// function definition er somoy jeta dewa hoy : parameter, parameter is like a local variable 
+// function definition er somoy jeta dewa hoy : parameter, parameter is like a local variable
 // function call er somoy jeta deya hoy : argument
 
 // in modern javascript arrow function introduced to more modernazied

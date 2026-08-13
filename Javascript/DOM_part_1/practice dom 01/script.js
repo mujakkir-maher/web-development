@@ -4,7 +4,7 @@
 // let parah = document.getElementsByTagName("p");
 // console.dir(parah);
 
-                /*
+/*
 query selector
                 */
 // let firstEl = document.querySelector("p");  // returns first element
@@ -12,10 +12,5 @@ query selector
 // let allEle = document.querySelectorAll("div"); // returns a node list
 // console.dir(allEle);
 
-let div = document.querySelector("div");
+const div = document.querySelector('div');
 console.dir(div);
-
-
-
-
-

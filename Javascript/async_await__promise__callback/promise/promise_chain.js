@@ -1,17 +1,17 @@
-function asyncfunc_1(){
+function asyncfunc_1() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            console.log("data_1");
-            resolve("success");
+            console.log('data_1');
+            resolve('success');
         }, 4000);
     });
 }
 
-function asyncfunc_2(){
+function asyncfunc_2() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            console.log("data_2");
-            resolve("success");
+            console.log('data_2');
+            resolve('success');
         }, 4000);
     });
 }
@@ -26,9 +26,8 @@ function asyncfunc_2(){
 //     });
 // });
 
-console.log ("fetching data_1.............");
+console.log('fetching data_1.............');
 asyncfunc_1().then((res) => {
-    console.log ("fetching data 2.............");
-        asyncfunc_2().then((res) => {
-    });
+    console.log('fetching data 2.............');
+    asyncfunc_2().then((res) => {});
 });

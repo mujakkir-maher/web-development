@@ -1,20 +1,16 @@
-function getData(dataID){
+function getData(dataID) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            console.log("Data : ", dataID);
-            resolve("success");
+            console.log('Data : ', dataID);
+            resolve('success');
         }, 2000);
     });
 }
 
-// actual promise chain 
+// actual promise chain
 getData(1)
-    .then((res) => {
-        return getData(2);
-    })
-    .then((res) => {
-        return getData(3);
-    })
+    .then((res) => getData(2))
+    .then((res) => getData(3))
     .then((res) => {
         console.log(res);
     });
